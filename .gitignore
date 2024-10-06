@@ -1,0 +1,9 @@
+# created by virtualenv automatically
+dataset/sentence_embedded.csv
+etc
+lib
+scripts
+share
+cosine_similarity_sentence_embedding.ipynb
+data_cleaning_sentence_embedding.ipynb
+pyvenv.cfg
