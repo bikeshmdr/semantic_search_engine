@@ -8,8 +8,17 @@ from functions import word_level_search, preprocess_query
 # Set the page configuration
 #st.set_page_config(page_title="Your App Title", layout="wide")
 
-# dataframe containing embeddings
-df = pd.read_pickle('preprocessed_data.pkl')
+import os
+import pandas as pd
+
+# Get the current file's directory
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the path to the pickle file inside the 'streamlit' folder
+file_path = os.path.join(current_dir, 'preprocessed_data.pkl')
+
+# Now use this path to load the pickle file
+df = pd.read_pickle(file_path)
 
 # Load the pre-trained BERT tokenizer and model
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
