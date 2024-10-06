@@ -24,8 +24,13 @@ df = pd.read_pickle(file_path)
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 model = BertModel.from_pretrained('bert-base-uncased')
 
-# Load the spacy model
-nlp = spacy.load("en_core_web_sm")
+# Try loading the model, if not found, download it
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    # If the model is not found, download it
+    os.system("python -m spacy download en_core_web_sm")
+    nlp = spacy.load("en_core_web_sm")
 
 def display_results(query, df, tokenizer, model):
     # Preprocess query as per your model requirements
